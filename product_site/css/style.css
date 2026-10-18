@@ -1,61 +1,142 @@
-/* Page background and font */
+/* page background and font */
 body {
-    background-color: #f2f5f9;
+    background-color: #0b0b10;
     font-family: Arial, Helvetica, sans-serif;
     margin: 20px;
+    color: #f5f5f5;
 }
 
-/* Main headings */
+/* gymmies logo */
+.logo {
+    float: left;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin: 0 15px 0 0;
+}
+
+/* Header title */
+.header h1 {
+    float: left;
+    color: #b56aff;
+    margin: 10px 20px 10px 0;
+}
+
+/* main headings */
 h1 {
-    color: navy;
+    color: #b56aff;
     text-align: center;
 }
 
-/* Other headings */
+/* other headings */
 h2 {
-    color: steelblue;
+    color: #b56aff;
 }
 
-/* Paragraphs */
+/* paragraphs */
 p {
-    color: #333333;
+    color: #ded8e8;
     font-size: 16px;
     line-height: 1.5;
 }
 
-/* About page header */
-header {
-    background-color: navy;
-    padding: 20px;
-    text-align: center;
+/* header */
+.header {
+    overflow: hidden;
+    background-color: #15121f;
+    padding: 15px;
+    border-bottom: 2px solid #7028a8;
+    border-radius: 8px;
 }
 
-/* Header text */
+/* header logo */
+.header h1 {
+    float: left;
+    color: #b56aff;
+    margin: 10px;
+}
+
+/* header navigation links */
+.header a {
+    float: right;
+    color: #eee5f7;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 14px 18px;
+    border-radius: 6px;
+}
+
+/* navigation hover effect */
+.header a:hover {
+    background-color: #392052;
+    color: white;
+}
+
+/* navigation click effect */
+.header a:active {
+    background-color: #9145cc;
+    color: white;
+}
+
+/* active/current page link */
+.header a.active {
+    background-color: #7028a8;
+    color: white;
+}
+
+/* main content box */
+.content {
+    float: left;
+    width: 80%;
+    box-sizing: border-box;
+    margin: 25px 10%;
+    padding: 25px;
+    background-color: #17151e;
+    border: 1px solid #392849;
+    border-radius: 10px;
+}
+
+/* about page header */
+header {
+    background-color: #15121f;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #7028a8;
+}
+
+/* header text */
 header h1,
 header p {
     color: white;
 }
 
-/* About page feature sections */
+/* about page feature sections */
 .feature {
-    background-color: white;
+    background-color: #211c2b;
     padding: 15px;
     margin: 15px 0;
+    border: 1px solid #392849;
+    border-radius: 8px;
 }
 
-/* About page main title */
+/* about page main title */
 #main-title {
-    color: white;
+    color: #b56aff;
 }
 
-/* Images */
+/* images */
 img {
+    float: left;
     max-width: 100%;
+    height: auto;
+    margin: 10px 20px 15px 0;
+    border-radius: 8px;
 }
 
-/* Table */
+/* table */
 table {
-    background-color: white;
+    background-color: #17151e;
+    color: #f5f5f5;
     border-collapse: collapse;
     width: 100%;
 }
@@ -64,39 +145,130 @@ th,
 td {
     padding: 10px;
     text-align: left;
+    border: 1px solid #49345e;
 }
 
-/* Form */
-input {
+th {
+    background-color: #392052;
+    color: white;
+}
+
+/* form */
+input,
+textarea,
+select {
     margin-bottom: 5px;
+    padding: 10px;
+    background-color: #211c2b;
+    color: white;
+    border: 1px solid #49345e;
+    border-radius: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-/* Links */
+/* form focus */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #9145cc;
+}
+
+/* buttons */
+button {
+    background-color: #7028a8;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9145cc;
+}
+
+/* links */
 a:link {
-    color: blue;
+    color: #c99aff;
 }
 
 a:visited {
-    color: purple;
+    color: #b58bd9;
 }
 
 a:hover {
-    color: red;
+    color: #e0c5ff;
 }
 
-/* Navigation */
+/* navigation */
 nav {
-    background-color: white;
+    background-color: #15121f;
     padding: 15px;
+    border-radius: 8px;
 }
 
-/* Footer */
+/* footer */
 footer {
-    background-color: navy;
-    padding: 10px;
+    clear: both;
+    background-color: #15121f;
+    padding: 15px;
     text-align: center;
+    border-top: 1px solid #392849;
 }
 
 footer p {
-    color: white;
+    color: #ded8e8;
+}
+
+/* design for phones */
+@media screen and (max-width: 600px) {
+    /* header links become vertical */
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    /* center the logo */
+    .header h1 {
+        float: none;
+        text-align: center;
+    }
+
+    /* main content fills the screen */
+    .content {
+        float: none;
+        width: 100%;
+        margin: 15px 0;
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    /* images fit the screen */
+    img {
+        float: none;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 15px auto;
+    }
+
+    /* tables fit smaller screens */
+    table {
+        font-size: 14px;
+    }
+
+        .logo {
+        float: none;
+        display: block;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+    }
+
+    .header h1 {
+        float: none;
+        text-align: center;
+    }
 }
