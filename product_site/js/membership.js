@@ -1,34 +1,30 @@
-let membershipName = "Basic";
-let membershipPrice = 10;
-let months = 1;
+var membershipName = "";
+var membershipPrice = 0;
+var months = 1;
 
-let planSelect = document.getElementById("membership");
+var planSelect = document.getElementById("membership");
+var planResult = document.getElementById("plan-result");
+var totalPriceResult = document.getElementById("total-price");
+var description = document.getElementById("calculator-description");
+var calculateButton = document.getElementById("calculate");
 
-let priceElements = document.getElementsByClassName("price-result");
-
-let paragraphs = document.getElementsByTagName("p");
-
-let calculateButton = document.querySelector("#calculate");
 
 calculateButton.addEventListener("click", function() {
 
-    membershipPrice = Number(planSelect.value);
+    membershipPrice = planSelect.value;
     membershipName = planSelect.options[planSelect.selectedIndex].text;
 
-    months = Number(document.getElementById("months").value);
+    months = document.getElementById("months").value;
 
-    let totalPrice = membershipPrice * months;
+    var totalPrice = membershipPrice * months;
 
-    document.getElementById("plan-result").textContent =
-        "Selected plan: " + membershipName;
+    planResult.textContent = "Selected plan: " + membershipName;
 
-    let resultText = "<strong>Total Price: $" +
-        totalPrice.toFixed(2) + "</strong>";
+    totalPriceResult.innerHTML =
+        "<strong>Total Price: $" + totalPrice.toFixed(2) + "</strong>";
 
-    priceElements[0].innerHTML = resultText;
-
-    paragraphs[2].innerHTML =
-        "<em>You selected " + months +
-        " month(s) of membership!</em>";
+    description.innerHTML =
+        "<em>You selected " + months + " month(s) of membership!</em>";
 
 });
+
