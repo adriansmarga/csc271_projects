@@ -1,34 +1,53 @@
-let membershipName = "Basic";
-let membershipPrice = 10;
-let months = 1;
+function displayWelcome() {
+    var welcomeMessage = document.getElementById("welcome-message");
 
-let planSelect = document.getElementById("membership");
+    if (welcomeMessage) {
+        welcomeMessage.textContent =
+            "Find a workout partner and make fitness better together!";
+    }
+}
+function calculateMembershipTotal(price, months) {
+    return price * months;
+}
 
-let priceElements = document.getElementsByClassName("price-result");
+function formatCurrency(amount) {
+    return "$" + amount.toFixed(2);
+}
+function updateMembershipCalculator() {
+    var planSelect = document.getElementById("membership");
+    var monthsInput = document.getElementById("months");
+    var planResult = document.getElementById("plan-result");
+    var totalPriceResult = document.getElementById("total-price");
+    var description = document.getElementById("calculator-description");
 
-let paragraphs = document.getElementsByTagName("p");
+    if (!planSelect || !monthsInput || !planResult ||
+        !totalPriceResult || !description) {
+        return;
+    }
 
-let calculateButton = document.querySelector("#calculate");
+    var membershipPrice = parseFloat(planSelect.value);
+    var membershipName = planSelect.options[planSelect.selectedIndex].text;
+    var months = parseInt(monthsInput.value, 10);
 
-calculateButton.addEventListener("click", function() {
+    if (isNaN(months) || months < 1) {
+        planResult.textContent = "";
+        totalPriceResult.textContent = "Please enter at least 1 month.";
+        description.textContent = "";
+        return;
+    }
 
-    membershipPrice = Number(planSelect.value);
-    membershipName = planSelect.options[planSelect.selectedIndex].text;
+    var totalPrice = calculateMembershipTotal(membershipPrice, months);
 
-    months = Number(document.getElementById("months").value);
+    planResult.textContent = "Selected plan: " + membershipName;
+    totalPriceResult.textContent = "Total Price: " + formatCurrency(totalPrice);
+    description.textContent =
+        "You selected " + months + " month(s) of membership!";
+}
 
-    let totalPrice = membershipPrice * months;
+displayWelcome();
 
-    document.getElementById("plan-result").textContent =
-        "Selected plan: " + membershipName;
+var calculateButton = document.getElementById("calculate");
 
-    let resultText = "<strong>Total Price: $" +
-        totalPrice.toFixed(2) + "</strong>";
-
-    priceElements[0].innerHTML = resultText;
-
-    paragraphs[2].innerHTML =
-        "<em>You selected " + months +
-        " month(s) of membership!</em>";
-
-});
+if (calculateButton) {
+    calculateButton.addEventListener("click", updateMembershipCalculator);
+}
